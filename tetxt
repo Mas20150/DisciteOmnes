@@ -1,0 +1,83 @@
+package com.example.disciteomnes.ui;
+
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.disciteomnes.R;
+import com.example.disciteomnes.data.dto.GroupMemberResponse;
+import com.example.disciteomnes.data.models.Group;
+import com.example.disciteomnes.network.DatabaseClient;
+import com.example.disciteomnes.network.DisciteOmnesApi;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class GroupsActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private GroupAdapter adapter;
+    private List<Group> groupList = new ArrayList<>();
+    private DisciteOmnesApi api;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_groups);
+
+        recyclerView = findViewById(R.id.recyclerViewGroups);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new GroupAdapter(groupList);
+        recyclerView.setAdapter(adapter);
+
+        // SharedPreferences auslesen
+        SharedPreferences prefs = getSharedPreferences("auth", MODE_PRIVATE);
+        String jwt = prefs.getString("access_token", null);
+        String userId = prefs.getString("user_id", null);
+
+        // Zugriffsschutz
+        if (jwt == null || userId == null) {
+            Toast.makeText(this, "Nicht angemeldet", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
+        // Retrofit-Client
+        api = DatabaseClient.getInstance(jwt).create(DisciteOmnesApi.class);
+
+        // Daten laden
+        String fullUrl = "https://pruclodpzbyfoaeuefvf.supabase.co/rest/v1/group_members"
+                + "?select=group:groups(id,name)&user_id=eq." + userId;
+
+        api.getGroupsByUser(fullUrl).enqueue(new Callback<List<GroupMemberResponse>>() {
+            @Override
+            public void onResponse(Call<List<GroupMemberResponse>> call, Response<List<GroupMemberResponse>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    groupList.clear();
+                    for (GroupMemberResponse gmr : response.body()) {
+                        groupList.add(gmr.getGroup());
+                    }
+                    Collections.sort(groupList, Comparator.comparing(Group::getName, String.CASE_INSENSITIVE_ORDER));
+                    adapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(GroupsActivity.this, "Laden fehlgeschlagen: " + response.code(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<GroupMemberResponse>> call, Throwable t) {
+                Toast.makeText(GroupsActivity.this, "Netzwerkfehler: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
