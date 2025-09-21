@@ -1,0 +1,38 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.disciteomnes">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.DisciteOmnes">
+
+        <!-- Start-Activity -->
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Alle weiteren Activities -->
+        <activity android:name=".ui.LoginActivity"/>
+        <activity android:name=".ui.RegisterActivity"/>
+        <activity android:name=".ui.DashboardActivity"/>
+        <activity android:name=".ui.TasksActivity"/>
+        <activity android:name=".ui.GroupsActivity"/>
+        <activity android:name=".ui.GroupCreateActivity"/>
+        <activity android:name=".ui.PlannerActivity"/>
+        <activity android:name=".ui.StudyStepsActivity"
+            tools:ignore="Instantiatable"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+</manifest>

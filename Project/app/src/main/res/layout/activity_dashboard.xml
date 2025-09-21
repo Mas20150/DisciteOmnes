@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Hauptlayout für das Dashboard der App.
+    Enthält Navigationselemente zu Gruppen, Aufgaben und Studienplan.
+    Zusätzlich: Gruppenliste (RecyclerView) und Logout-Button.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="#f9f9f9">
+
+    <!-- Vertikale Anordnung aller Elemente -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Begrüßung des Benutzers (Dynamischer Text in Java setzen) -->
+        <TextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Willkommen, Benutzer!"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#37474F"
+            android:paddingBottom="16dp" />
+
+        <!-- Button: Zu "Meine Gruppen" navigieren -->
+        <Button
+            android:id="@+id/btnMyGroups"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Meine Gruppen"
+            android:backgroundTint="#00897B"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="12dp" />
+
+        <!-- Button: Studienpläne anzeigen (PlannerActivity) -->
+        <Button
+            android:id="@+id/btnPlanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Studienplan anzeigen"
+            android:backgroundTint="#26A69A"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="12dp" />
+
+        <!-- Button: Zur Aufgabenübersicht -->
+        <Button
+            android:id="@+id/btnMyTasks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Meine Aufgaben"
+            android:backgroundTint="#80CBC4"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="12dp" />
+
+        <!-- Button: Neue Gruppe erstellen (leitet zu GroupCreateActivity) -->
+        <Button
+            android:id="@+id/btnCreateGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Neue Gruppe erstellen"
+            android:backgroundTint="#4DB6AC"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp" />
+
+        <!-- RecyclerView: Vorschau der Gruppen (z. B. zuletzt beigetretene Gruppen) -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerGroups"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
+        <!-- Button: Benutzer-Logout und Zurück zur LoginActivity -->
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Abmelden"
+            android:backgroundTint="#B0BEC5"
+            android:textColor="#000000"
+            android:layout_marginTop="24dp" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Aufgaben-Übersicht – im Dashboard-Stil -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#f9f9f9"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Titel -->
+    <TextView
+        android:text="Meine Aufgaben"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#37474F"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Button: Neue Aufgabe -->
+    <Button
+        android:id="@+id/btnAddTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Neue Aufgabe"
+        android:backgroundTint="#00796B"
+        android:textColor="#FFFFFF" />
+
+    <!-- Liste der Aufgaben -->
+    <ListView
+        android:id="@+id/listViewTasks"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:dividerHeight="1dp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Zurück-Button -->
+    <Button
+        android:id="@+id/btnBackToDashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Zurück"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#B0BEC5"
+        android:textColor="#000000" />
+
+</LinearLayout>

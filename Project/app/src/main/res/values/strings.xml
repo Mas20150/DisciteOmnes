@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DisciteOmnes</string>
+        <string name="btn_back">← Zurück</string>
+        <string name="btn_add_task">➕ Neue Aufgabe</string>
+        <string name="title_tasks">Meine Aufgaben</string>
+    <string-array name="roles_array">
+        <item>Ich bin Student</item>
+        <item>Ich bin Tutor</item>
+        <item>Ich bin Gast</item>
+    </string-array>
+</resources>

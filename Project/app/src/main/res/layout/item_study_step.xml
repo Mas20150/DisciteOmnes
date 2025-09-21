@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Einzelner Study Step-Eintrag im RecyclerView -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:elevation="1dp"
+    android:layout_marginVertical="4dp"
+    android:layout_marginHorizontal="8dp">
+
+    <!-- Titel des Study Steps -->
+    <TextView
+        android:id="@+id/studyStepTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lernschritt-Titel"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#37474F"
+        android:paddingBottom="4dp" />
+
+    <!-- Datum des Study Steps -->
+    <TextView
+        android:id="@+id/studyStepDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="YYYY-MM-DD"
+        android:textSize="14sp"
+        android:textColor="#607D8B" />
+
+</LinearLayout>

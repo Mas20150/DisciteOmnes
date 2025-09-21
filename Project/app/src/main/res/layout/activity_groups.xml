@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Layout für Gruppenanzeige (GroupsActivity).
+    Zeigt alle Gruppen, denen der Nutzer angehört.
+    Nutzt Dashboard-Farbschema (hellgrau/türkis).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#f9f9f9">
+
+    <!-- RecyclerView für Gruppenliste -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewGroups"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:padding="8dp" />
+
+    <!-- Button zum Zurückkehren zum Dashboard -->
+    <Button
+        android:id="@+id/btnBackToDashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Zurück"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#B0BEC5"
+        android:textColor="#000000" />
+</LinearLayout>
